@@ -8,3 +8,11 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name  # Show product name in Django Admin
+    def to_dict(self):
+        return {
+            'name': self.name,
+            'price': self.price,
+            'description': self.description,
+            'image': self.image,
+
+        }

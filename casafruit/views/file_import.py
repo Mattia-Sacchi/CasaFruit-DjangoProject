@@ -9,7 +9,7 @@ def tryFileImport(request):
         return render(request, 'settings.html')
 
     uploaded_file = request.FILES['zip']
-    print(uploaded_file)
+
     with ZipFile(file=uploaded_file, mode='r') as zip: 
     # printing all the contents of the zip file 
         zip.printdir()
