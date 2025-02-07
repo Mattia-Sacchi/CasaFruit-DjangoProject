@@ -1,14 +1,33 @@
 {% extends "base.html" %}
+{% block title %} Settings {% endblock %}
 
 {% block body %}
 <div class="ui container" style="margin-top: 80px; text-align: center;">
-    <h1 class="ui header">Fresh & Organic Fruits and Vegetables & Salame</h1>
-    <p>Get produce delivered straight to your door!</p>
-</div>
-<div class="ui three column stackable grid">
-    <div class="ui stackable divided equal height center ">
-    <img src="https://static.vecteezy.com/system/resources/thumbnails/046/822/483/small_2x/a-vibrant-assortment-of-fresh-fruits-and-vegetables-isolated-on-a-transparent-background-free-png.png">
-    <a href="{% url 'dashboard' %}" class="ui blue button">Order Now</a></div>
+    {% if messages %}
+        <div class="ui message">  {% for message in messages %}
+            <div class="ui {% if message.tags == 'success' %}positive{% elif message.tags == 'error' %}negative{% elif message.tags == 'warning' %}warning{% elif message.tags == 'info' %}info{% endif %} message">
+            <i class="close icon"></i>
+            {{ message }}
+            </div>
+        {% endfor %}
+        </div>
+            <script>
+            $('.message .close')
+            .on('click', function() {
+                $(this)
+                .closest('.message')
+                .transition('fade');
+            });
+            </script>
+    {% endif %}
+    <h1 class="ui header">Add elements</h1>
+    <form class="ui large form" method="POST" enctype="multipart/form-data" action="{% url 'process' %}">
+        {% csrf_token %}
+        <div class="ui file input">
+            <input type="file" id = "zip" name="zip" accept=".zip">
+        </div>
+        <button class="ui fluid large teal submit button">Upload</button>
+    </form>
 </div>
 
 {% endblock %}
