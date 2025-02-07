@@ -5,7 +5,8 @@ from django.contrib.auth import authenticate, login
 
 
 def renderLogin(request):
-    return render(request, "login.html")
+    
+    return render(request, "login.html", )
 
 def tryLogin(request):
     username = request.POST["username"]
@@ -16,7 +17,6 @@ def tryLogin(request):
         messages.error(request, "Invalid username or password.")
         return renderLogin(request)
     login(request, user)
-    messages.success(request, "Login successful!")
     return redirect("dashboard")
         
 def userLogin(request):

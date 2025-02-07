@@ -6,18 +6,11 @@ from django.contrib.auth import authenticate,logout
 
 
 def dashboard(request):
-    if str(request.user) != "AnonymousUser":
-        print(request.user)
-        user = User.objects.get(username=request.user)
-    else:
-        return render(request, 'dashboard.html')
-
-    if not user.is_authenticated:
-        return render(request, 'dashboard.html')
-    
     products = Product.objects.all()  # Fetch all products
-    return render(request, 'dashboard.html', {'products': products, 'user': user , 'username' : user.get_username()})
+    return render(request, 'dashboard.html', {'products': products})
 
+def settings(request):
+    return render(request, 'settings.html')
 
 def homepage(request):
     products = Product.objects.all()  # Fetch all products
@@ -25,5 +18,7 @@ def homepage(request):
 
 def logoutRedirect(request):
     logout(request)
+    messages.success(request, "Logout successful!")
+    
     return redirect("login")
     

@@ -1,71 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.js"></script>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %} Register {% endblock %}
+{% block body %}
 
-    <div class="ui middle aligned center aligned grid" style="height: 100vh;">
-        <div class="column" style="max-width: 400px;">
-            <h2 class="ui teal image header">
-                <div class="content">Register for an Account</div>
-            </h2>
+{% if user.is_authenticated %}
+<div class="ui item center">Something went wrong</div>
+{% else %}
+<div class="ui middle aligned center aligned grid" style="height: 100vh;">
+    <div class="column" style="max-width: 400px;">
+        <h2 class="ui teal image header">
+            <div class="content">Register for an Account</div>
+        </h2>
 
-            {% if messages %}
-                <div class="ui message">
-                    <ul class="list">
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
+        {% if messages %}
+            <div class="ui message">  {% for message in messages %}
+                <div class="ui {% if message.tags == 'success' %}positive{% elif message.tags == 'error' %}negative{% elif message.tags == 'warning' %}warning{% elif message.tags == 'info' %}info{% endif %} message">
+                <i class="close icon"></i>
+                {{ message }}
                 </div>
-            {% endif %}
-
-            <form class="ui large form" method="POST">
-                {% csrf_token %}
-                <div class="ui stacked segment">
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="user icon"></i>
-                            <input type="text" name="username" placeholder="Username" required>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="envelope icon"></i>
-                            <input type="email" name="email" placeholder="Email" required>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="lock icon"></i>
-                            <input type="password" name="password1" placeholder="Password" required>
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="lock icon"></i>
-                            <input type="password" name="password2" placeholder="Confirm Password" required>
-                        </div>
-                    </div>
-
-                    <button class="ui fluid large teal submit button">Register</button>
-                </div>
-            </form>
-
-            <div class="ui message">
-                Already have an account? <a href="{% url 'login' %}">Login</a>
+            {% endfor %}
             </div>
+                <script>
+                $('.message .close')
+                .on('click', function() {
+                    $(this)
+                    .closest('.message')
+                    .transition('fade');
+                });
+                </script>
+        {% endif %}
+
+        <form class="ui large form" method="POST">
+            {% csrf_token %}
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="username" placeholder="Username" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="envelope icon"></i>
+                        <input type="email" name="email" placeholder="Email" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="password1" placeholder="Password" required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="lock icon"></i>
+                        <input type="password" name="password2" placeholder="Confirm Password" required>
+                    </div>
+                </div>
+
+                <button class="ui fluid large teal submit button">Register</button>
+            </div>
+        </form>
+
+        <div class="ui message">
+            Already have an account? <a href="{% url 'login' %}">Login</a>
         </div>
     </div>
+</div>
+{% endif %}
 
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="ui container" style="margin-top: 80px; text-align: center;">
+    <h1 class="ui header">Fresh & Organic Fruits and Vegetables & Salame</h1>
+    <p>Get produce delivered straight to your door!</p>
+</div>
+<div class="ui three column stackable grid">
+    <div class="ui stackable divided equal height center ">
+    <img src="https://static.vecteezy.com/system/resources/thumbnails/046/822/483/small_2x/a-vibrant-assortment-of-fresh-fruits-and-vegetables-isolated-on-a-transparent-background-free-png.png">
+    <a href="{% url 'dashboard' %}" class="ui blue button">Order Now</a></div>
+</div>
+
+{% endblock %}

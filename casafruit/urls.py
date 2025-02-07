@@ -9,4 +9,5 @@ urlpatterns=[
     path('dashboard/',views.dashboard, name='dashboard'),
     path('logout/',views.logoutRedirect, name='logout'),
     path('homepage/',views.homepage, name='homepage'),
+    path('settings/',views.settings, name='settings'),
 ]
