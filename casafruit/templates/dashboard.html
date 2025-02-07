@@ -1,0 +1,71 @@
+{% load static %}  <!-- Load static files -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Picks - Fruits & Vegetables Shop</title>
+
+    <!-- Fomantic UI CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.3/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.3/semantic.min.js"></script>
+
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="ui fixed menu">
+        <div class="ui container">
+            <a href="{% url 'homepage' %}" class="header item">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/046/822/483/small_2x/a-vibrant-assortment-of-fresh-fruits-and-vegetables-isolated-on-a-transparent-background-free-png.png"></img> Casa Fruit
+            </a>
+            <a href="{% url 'dashboard' %}" class="item">Shop</a>
+            <div class="right menu">
+                <a href="{% url 'login' %}" class="ui orange button">Sign In</a>
+                <a href="{% url 'register' %}" class="ui blue button">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="ui container" style="margin-top: 80px; text-align: center;">
+        <h1 class="ui header">Fresh & Organic Fruits and Vegetables</h1>
+        <p>Get farm-fresh produce delivered straight to your door!</p>
+    </div>
+
+    <!-- Featured Products (Dynamic Django Data) -->
+    <div class="ui container" style="margin-top: 40px;">
+        <h2 class="ui center aligned header">🌟 Featured Products</h2>
+        <div class="ui three column stackable grid">
+            {% for product in products %}
+            <div class="column">
+                <div class="ui card">
+                    <div class="image">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    </div>
+                    <div class="content">
+                        <a class="header">{{ product.name }}</a>
+                        <div class="meta">
+                            <span>€{{ product.price }}/lb</span>
+                        </div>
+                        <div class="extra content">
+                            <button class="ui green button">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="ui inverted vertical footer segment" style="margin-top: 40px; padding: 20px;">
+        <div class="ui center aligned container">
+            <p>&copy; 2025 Fresh Picks. All rights reserved.</p>
+        </div>
+    </div>
+
+</body>
+</html>

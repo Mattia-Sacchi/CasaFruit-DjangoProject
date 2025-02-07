@@ -1,10 +1,6 @@
-from django.shortcuts import render
-
-# Create your views here.
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
 
 def renderRegisterPage(request):
     return render(request, "register.html")
@@ -26,8 +22,9 @@ def tryRegister(request):
     if User.objects.filter(email=email).exists():
         errorMessage = "Email already in use!"
 
-    if errorMessage == "":
+    if errorMessage != "":
         messages.error(request, errorMessage)
+        return renderRegisterPage(request)
 
 
     user = User.objects.create_user(username=username, email=email, password=password1)
@@ -37,24 +34,7 @@ def tryRegister(request):
 
 
 
-def register(request):
+def userRegister(request):
     if request.method == "POST":
         return tryRegister(request)
     return renderRegisterPage(request)
-
-def login(request):
-    print("porcodio")
-    if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)
-            messages.success(request, "Login successful!")
-            return redirect("dashboard")  # Redirect to a dashboard or home page
-        else:
-            messages.error(request, "Invalid username or password.")
-        
-
-    return render(request, "login.html")
