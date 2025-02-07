@@ -19,8 +19,6 @@ def tryLogin(request):
     messages.success(request, "Login successful!")
     return redirect("dashboard")
         
-
-
 def userLogin(request):
     if request.method == "POST":
         return tryLogin(request)

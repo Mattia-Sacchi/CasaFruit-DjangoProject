@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %} title {% endblock %}</title>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fomantic UI CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.3/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.3/semantic.min.js"></script>
+    {% block head %}
+    
+    {% endblock %}
+</head>
+<body>
+
+{% block header %}
+<!-- Navigation Bar -->
+    <div class="ui fixed menu">
+      <div class="ui container">
+        <img src="https://www.unimore.it//themes/custom/unimore_base/icons/logo.svg" height="45px">
+          <a href="{% url 'homepage' %}" class="header item">
+              <img src="https://static.vecteezy.com/system/resources/thumbnails/046/822/483/small_2x/a-vibrant-assortment-of-fresh-fruits-and-vegetables-isolated-on-a-transparent-background-free-png.png"></img> Casa Fruit
+          </a>
+          <a href="{% url 'dashboard' %}" class="item">Shop</a>
+          <div class="right menu">
+            
+          {% if user.is_authenticated %}
+          
+              <a class="item">{{ user.username }}</a>
+              <a href="{% url 'logout' %}" class="item">Logout</a>
+          
+          {% else %}
+          
+              <a href="{% url 'login' %}" class="ui orange button">Sign In</a>
+              <a href="{% url 'register' %}" class="ui blue button">Sign Up</a>
+          
+          {% endif %}
+          
+          
+      </div>
+          
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}
+
+{% block footer %}
+<footer>
+    <div class="ui inverted vertical center aligned footer segment " style="bottom: 0px; position:fixed; width: 100%;">
+        <div class="ui container">
+            <div class="ui stackable divided equal height">
+                  <h4 class="ui inverted header">&copy; 2025 Casa Fruit. All rights reserved</h4>
+
+                    <div class="ui inverted link list">
+                      <a href="#" class="item">Email: mattiasacchi2002@gmail.com</a>
+                      <a href="#" class="item">Telefono: +33 744 149 617</a>
+                      <a href="#" class="item">via Scarsellini 2, Mantova, Italia, 46100</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+
+</body>
+</html>
