@@ -7,6 +7,7 @@
         <h1 class="ui header">Fresh & Organic Fruits and Vegetables & Salame</h1>
         <p>Get produce delivered straight to your door!</p>
     </div>
+    {% if user.is_authenticated %}
 
     <!-- Featured Products (Dynamic Django Data) -->
     <div class="ui container" style="margin-top: 40px;padding-bottom: 400px;">
@@ -32,19 +33,15 @@
                                 {% csrf_token %}
                                 <button type="submit" class="ui white button">
                                 <input type="hidden" name="product" value="{{ product.name }}">
-                                {% for l in likes %}
-
-                                    {% if l.product == product and l.user == user %}
-                                        {% if l.like == True %}
-                                            <input type="hidden" name="like" value="False">
-                                            <i class="thumbs up icon" style="visibility: visible;">
-                                        {% else %}
-                                            <input type="hidden" name="like" value="True">
-                                            <i class="thumbs up outline icon" style="visibility: visible;">
-                                        {% endif %}
-                                    {% endif %}
-
-                                {% endfor %}
+                                
+                                {% if product in likes %}
+                                    <input type="hidden" name="like" value="False">
+                                    <i class="thumbs up icon" style="visibility: visible;">
+                                {% else %}
+                                    <input type="hidden" name="like" value="True">
+                                    <i class="thumbs up outline icon" style="visibility: visible;">
+                                {% endif %}
+                                    
                         
                                                 
                             </i></button>
@@ -61,5 +58,6 @@
             {% endfor %}
         </div>
     </div>
+    {% endif %}
 
 {% endblock %}

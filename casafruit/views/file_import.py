@@ -30,7 +30,6 @@ def tryFileImport(request):
 
         with open(DataFilePath+DataFileName, 'r', encoding='utf-8') as f:
             data = json.load(f)
-            print(namelistZip)
             for item in data:
                 name = item['name']
                 price = item['price']
@@ -47,7 +46,6 @@ def tryFileImport(request):
                     continue
 
                 if image not in namelistZip:
-                    print(image)
                     messages.error(request, image+ ' was not found')
                     continue
 
@@ -58,11 +56,6 @@ def tryFileImport(request):
                 messages.info(request, name+ ' is added to the db')
                 
 
-
-            
-        #print('Extracting all the files now...') 
-        #zip.extractall() 
-        #print('Done!') 
     return render(request, 'settings.html')
 
 def processFileZip(request):

@@ -38,22 +38,18 @@ def likeChanged(request):
     print(obj)
     return renderDash(request)
 
-def getLikesDict(prods, likes, user):
-    dict = {}
-    for p in prods:
-        dict[p] = False
+def getLikes(prods, likes, user):
+    list = []
 
     for l in likes:
         if l.user != user:
             continue
-        contained = False
         for p in prods:
             if p == l.product:
-                dict[p] = l.like
-                contained = True
-        if contained == False:
-                dict[p] = False
-    return dict
+                if l.like == True:
+                    list.append(p)
+                
+    return list
             
 
     
@@ -61,11 +57,11 @@ def getLikesDict(prods, likes, user):
 def renderDash(request):
     likes = Like.objects.all()
     products = Product.objects.all()
-    likesDict = getLikesDict(products,likes,request.user)
-    print(likesDict)
+    list = getLikes(products,likes,request.user)
+    print(list)
 
     
-    return render(request, 'dashboard.html', {'products': products, 'likes' : likes})
+    return render(request, 'dashboard.html', {'products': products, 'likes' : list})
 
 def dashboardPage(request):
     if request.method == "POST":
