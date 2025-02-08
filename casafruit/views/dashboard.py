@@ -5,6 +5,8 @@ from ..models import Product
 
 
 def dashboardPage(request):
+    if request.method == "POST":
+        request.POST['']
     products = Product.objects.all()  # Fetch all products
     return render(request, 'dashboard.html', {'products': products})
 

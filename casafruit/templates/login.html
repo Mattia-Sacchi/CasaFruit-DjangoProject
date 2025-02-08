@@ -10,16 +10,6 @@
         <h2 class="ui teal image header">
             <div class="content">Log in to Your Account</div>
         </h2>
-<!--
-        {% if messages %}
-            <div class="ui negative message">
-                <ul class="list">
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endif %} -->
         {% if messages %}
             <div class="ui message">  {% for message in messages %}
                 <div class="ui {% if message.tags == 'success' %}positive{% elif message.tags == 'error' %}negative{% elif message.tags == 'warning' %}warning{% elif message.tags == 'info' %}info{% endif %} message">
