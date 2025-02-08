@@ -29,7 +29,7 @@ class Like(models.Model):
         ]
     def __str__(self):
         temp = ""
-        if self.like: 
+        if self.like == True: 
             temp =  "positive"  
         else: 
             temp= "negative" 

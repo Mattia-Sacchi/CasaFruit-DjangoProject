@@ -28,22 +28,26 @@
                         </div>
                         <div class="ui centered row">
                             <div class="extra content" style="float:left">
-                            {% if like %}
-                                <form id="like" action="{% url 'dashboard' %}" method="POST">
+                            <form id="like" action="{% url 'dashboard' %}" method="POST">
                                 {% csrf_token %}
-                            {% else %}
-                                <form id="nolike" action="{% url 'dashboard' %}" method="POST"></form>
-                                {% csrf_token %}
-                            {% endif %}
-                            <input type="hidden" name="id" value="{{ product.name }}">
-                            <button type="submit" class="ui white button">
-                                {% if like %}
-                                    <i class="thumbs up icon" style="visibility: visible;">
-                                {% else %}
-                                    <i class="thumbs up outline icon" style="visibility: visible;">
-                                {% endif %}
+                                <button type="submit" class="ui white button">
+                                <input type="hidden" name="product" value="{{ product.name }}">
+                                {% for l in likes %}
 
-                            </i>
+                                    {% if l.product == product and l.user == user %}
+                                        {% if l.like == True %}
+                                            <input type="hidden" name="like" value="False">
+                                            <i class="thumbs up icon" style="visibility: visible;">
+                                        {% else %}
+                                            <input type="hidden" name="like" value="True">
+                                            <i class="thumbs up outline icon" style="visibility: visible;">
+                                        {% endif %}
+                                    {% endif %}
+
+                                {% endfor %}
+                        
+                                                
+                            </i></button>
                             </form>
                         </div>
                             <div class="extra content" style="float:right">
