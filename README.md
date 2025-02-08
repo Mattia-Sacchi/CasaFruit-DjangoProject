@@ -53,6 +53,11 @@ The application supports user authentication, including:
 - User Registration: New users can register by providing their information.
 - User Login: Registered users can log in to the website using their credentials.
 
+## Adding files
+In the settings page it is possible to upload a zip file containing data.
+The file must be names data.json and contain the data of name, price, description and image name.
+The zip file must also contain the images
+
 ## Custom Functionalities
 The project includes custom features designed to enhance user interaction:
 

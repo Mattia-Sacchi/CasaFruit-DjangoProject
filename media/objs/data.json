@@ -1,0 +1,12 @@
+[
+    {"name": "Carota", "price": 1.99, "description": "Piena di vitamina C", "image": "carota.jpeg"},
+    {"name": "Verza", "price": 1.20, "description": "Fresca", "image": "verza.jpeg"},
+    {"name": "Albicocca", "price": 2.88, "description": "Succosa", "image": "albicocca.jpg"},
+    {"name": "Broccolo", "price": 1.50, "description": "Ottimo da bollire", "image": "broccolo.jpg"},
+    {"name": "Cotechino", "price": 18.90, "description": "Con cotica sottile", "image": "cotechino.jpg"},
+    {"name": "Finocchio", "price": 0.9, "description": "Sia maschio che femmina", "image": "finocchio.jpg"},
+    {"name": "Fragola", "price": 4.20, "description": "Cresciuta fuoriserra", "image": "fragola.jpg"},
+    {"name": "Pera", "price": 1.20, "description": "Emiliana", "image": "pera.jpg"},
+    {"name": "Mela", "price": 1, "description": "Dal Trentino", "image": "mela.jpg"},
+    {"name": "Salame", "price": 30, "description": "Con poco grasso", "image": "salame.jpg"}
+]
