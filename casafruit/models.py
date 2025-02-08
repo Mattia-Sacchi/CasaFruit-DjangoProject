@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Product(models.Model):
     name = models.CharField(max_length=100)  # Product name
@@ -16,3 +17,8 @@ class Product(models.Model):
             'image': self.image,
 
         }
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=False)
+    like = False

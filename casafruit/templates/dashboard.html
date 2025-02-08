@@ -26,9 +26,31 @@
                         <div class="meta">
                             <span>€{{ product.price }}/Kg</span>
                         </div>
-                        <div class="extra content" style="float:right">
-                            <button class="ui green button">Add to Cart</button>
+                        <div class="ui centered row">
+                            <div class="extra content" style="float:left">
+                            {% if like %}
+                                <form id="like" action="{% url 'dashboard' %}" method="POST">
+                                {% csrf_token %}
+                            {% else %}
+                                <form id="nolike" action="{% url 'dashboard' %}" method="POST"></form>
+                                {% csrf_token %}
+                            {% endif %}
+                            <input type="hidden" name="id" value="{{ product.name }}">
+                            <button type="submit" class="ui white button">
+                                {% if mi_piace %}
+                                    <i class="thumbs up icon" style="visibility: visible;">
+                                {% else %}
+                                    <i class="thumbs up outline icon" style="visibility: visible;">
+                                {% endif %}
+
+                            </i>
+                            </form>
                         </div>
+                            <div class="extra content" style="float:right">
+                                <button class="ui green button">Add to Cart</button>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
