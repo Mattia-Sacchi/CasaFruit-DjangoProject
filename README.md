@@ -62,6 +62,11 @@ The zip file must also contain the images
 The project includes custom features designed to enhance user interaction:
 
 Item Selection & Ordering: Users can select items they wish to purchase and place an order.
+
+## 📧 Contact
+- **Project Author**: Mattia Sacchi
+- **Personal Email**: [mattiasacchi2002@gmail.com](mailto:mattiasacchi2002@gmail.com)
+- **Uni Email**: [306499@studenti.unimore.it](mailto:306499@studenti.unimore.it)
 Business Contact: Users can contact the business owner to request the addition of new products to the platform.
 
 
