@@ -4,7 +4,7 @@
 
 Run the following command to clone the repository:
 ```
-git clone https://github.com/Mattia-Sacchi/DjangoProject.git
+git clone git@github.com:Mattia-Sacchi/CasaFruit-DjangoProject.git
 ```
 
 ## 2. Set up the virtual environment
