@@ -1,4 +1,4 @@
-# Django Project Readme
+# Django Demo Project (for University)
 
 ## 1. Installation
 
